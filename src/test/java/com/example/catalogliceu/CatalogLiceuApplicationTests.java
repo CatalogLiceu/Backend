@@ -29,6 +29,10 @@ class CatalogLiceuApplicationTests {
 	private AnClasaRepository anClasaRepository;
 	@Autowired
 	private ClasaMaterieProfesorRepository clasaMaterieProfesorRepository;
+	@Autowired
+	private AdministratorScolarRepository administratorScolarRepository;
+	@Autowired
+	private PermisieAdministratorRepository permisieAdministratorRepository;
 	@Test
 	void contextLoads() {
 		Profil profilReal = Profil.builder()
@@ -88,6 +92,16 @@ class CatalogLiceuApplicationTests {
 				.build();
 		clasaMaterieProfesorRepository.save(a);
 		clasaMaterieProfesorRepository.save(b);
-	}
 
+		AdministratorScolar administratorScolar = AdministratorScolar.builder().build();
+		administratorScolarRepository.save(administratorScolar);
+		PermisieAdministrator perm1 = PermisieAdministrator.builder()
+				.utilizator(profesor)
+				.build();
+		PermisieAdministrator perm2 = PermisieAdministrator.builder()
+				.utilizator(administratorScolar)
+				.build();
+		permisieAdministratorRepository.save(perm1);
+		permisieAdministratorRepository.save(perm2);
+	}
 }
