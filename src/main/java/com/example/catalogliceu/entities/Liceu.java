@@ -1,11 +1,17 @@
 package com.example.catalogliceu.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "liceu")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 public class Liceu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

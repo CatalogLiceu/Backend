@@ -1,9 +1,17 @@
 package com.example.catalogliceu.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "specializare")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 public class Specializare {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,5 +19,7 @@ public class Specializare {
     @ManyToOne
     @JoinColumn(name = "profil_id", nullable = false)
     private Profil profil;
+    @ManyToMany(mappedBy = "specializari")
+    private List<Materie> materii;
     private String nume;
 }

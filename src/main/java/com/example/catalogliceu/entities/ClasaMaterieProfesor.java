@@ -4,18 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "diriginte")
+@Table(name = "clasa_materie_profesor")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Diriginte {
+public class ClasaMaterieProfesor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "clasa_id")
     private Clasa clasa;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "materie_id")
+    private Materie materie;
+    @ManyToOne
+    @JoinColumn(name = "profesor_id")
     private Profesor profesor;
 }
