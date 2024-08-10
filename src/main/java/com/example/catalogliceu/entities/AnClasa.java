@@ -18,5 +18,6 @@ public class AnClasa {
     private Long id;
     @Min(9)
     @Max(13)
+    @Column(unique = true)
     private Long nrClasa;
 }

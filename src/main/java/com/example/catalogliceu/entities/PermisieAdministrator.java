@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "permisie_administrator")
+@Table(name = "permisie_administrator", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"clasa_id", "liceu_id"})
+})
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -15,6 +17,10 @@ public class PermisieAdministrator {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    @JoinColumn(name = "utilizator_id", unique = true)
+    @JoinColumn(name = "utilizator_id")
     private Utilizator utilizator;
+    @OneToOne
+    @JoinColumn(name = "liceu_id")
+    private Liceu liceu;
+
 }

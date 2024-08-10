@@ -12,9 +12,13 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Elev extends Utilizator {
     @ManyToOne
-    @JoinColumn(name = "clasa_id", nullable = false)
+    @JoinColumn(name = "clasa_id")
     private Clasa clasa;
+    @Builder
+    public Elev(Long id, String nume, String prenume, String email, String porecla, String parola, Clasa clasa) {
+        super(id, nume, prenume, email, porecla, parola);
+        this.clasa = clasa;
+    }
 }

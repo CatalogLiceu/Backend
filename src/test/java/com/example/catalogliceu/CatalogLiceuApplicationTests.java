@@ -72,7 +72,6 @@ class CatalogLiceuApplicationTests {
 				.litera("A")
 				.liceu(liceu)
 				.specializare(specializareMateInfo)
-				.diriginte(profesor)
 				.build();
 		clasaRepository.save(clasa9A);
 		Diriginte diriginte = Diriginte.builder()

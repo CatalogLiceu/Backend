@@ -10,7 +10,7 @@ public class AnClasaService {
     public AnClasaService(AnClasaRepository anClasaRepository) {
         this.anClasaRepository = anClasaRepository;
     }
-    public void adaugaAn(Long nrClasa) {
+    public void creeazaAn(Long nrClasa) {
         AnClasa anClasa = AnClasa.builder()
                 .nrClasa(nrClasa)
                 .build();

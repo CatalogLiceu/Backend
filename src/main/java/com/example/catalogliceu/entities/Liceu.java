@@ -19,6 +19,4 @@ public class Liceu {
     @OneToMany
     private List<Specializare> specializari;
     private String nume;
-    @OneToMany(mappedBy = "liceu")
-    private List<Clasa> clase;
 }

@@ -19,7 +19,5 @@ public class Specializare {
     @ManyToOne
     @JoinColumn(name = "profil_id", nullable = false)
     private Profil profil;
-    @ManyToMany(mappedBy = "specializari")
-    private List<Materie> materii;
     private String nume;
 }

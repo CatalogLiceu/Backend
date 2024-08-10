@@ -22,12 +22,7 @@ public class Clasa {
     @ManyToOne
     @JoinColumn(name = "anclasa_id", nullable = false)
     private AnClasa anClasa;
-    @OneToOne
-    @JoinColumn(name = "profesor_id", nullable = false)
-    private Profesor diriginte;
     private String litera;
-    @OneToMany(mappedBy = "clasa")
-    private List<Elev> elevi;
     @ManyToOne
     private Specializare specializare;
 }

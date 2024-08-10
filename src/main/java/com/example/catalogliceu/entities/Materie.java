@@ -24,6 +24,6 @@ public class Materie {
     )
     private List<Specializare> specializari;
     @OneToMany
-    private List<AnClasa> clase;
+    private List<AnClasa> aniClase;
     private String nume;
 }

@@ -13,8 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Profesor extends Utilizator {
+    @Builder
+    public Profesor(Long id, String nume, String prenume, String email, String porecla, String parola) {
+        super(id, nume, prenume, email, porecla, parola);
+    }
     @OneToMany(mappedBy = "profesor")
     private List<ClasaMaterieProfesor> clasaMaterieProfesori;
 }
