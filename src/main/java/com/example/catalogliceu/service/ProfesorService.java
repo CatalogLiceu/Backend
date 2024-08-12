@@ -1,23 +1,33 @@
 package com.example.catalogliceu.service;
 
+import com.example.catalogliceu.dto.DateProfesor;
 import com.example.catalogliceu.entities.Profesor;
+import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.repositories.ProfesorRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProfesorService {
     private final ProfesorRepository profesorRepository;
-    public ProfesorService(ProfesorRepository profesorRepository) {
+    private final PasswordEncoder passwordEncoder;
+    public ProfesorService(ProfesorRepository profesorRepository, PasswordEncoder passwordEncoder) {
         this.profesorRepository = profesorRepository;
+        this.passwordEncoder = passwordEncoder;
     }
-    public void creeazaProfeor(String nume, String prenume, String email, String porecla, String parola) {
+    public Profesor creeazaProfesor(DateProfesor dateProfesor) {
         Profesor profesor = Profesor.builder()
-                .nume(nume)
-                .prenume(prenume)
-                .email(email)
-                .porecla(porecla)
-                .parola(parola)
+                .nume(dateProfesor.getNume())
+                .prenume(dateProfesor.getPrenume())
+                .email(dateProfesor.getEmail())
+                .porecla(dateProfesor.getPorecla())
+                .parola(passwordEncoder.encode(dateProfesor.getParola()))
                 .build();
-        profesorRepository.save(profesor);
+        profesor = profesorRepository.save(profesor);
+        return profesor;
+    }
+
+    public Boolean esteProfesor(Utilizator utilizator) {
+        return profesorRepository.findByPorecla(utilizator.getPorecla()).isPresent();
     }
 }

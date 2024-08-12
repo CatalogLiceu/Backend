@@ -14,12 +14,13 @@ public class MaterieService {
     public MaterieService(MaterieRepository materieRepository) {
         this.materieRepository = materieRepository;
     }
-    public void creeazaMaterie(List<Specializare> specializari, List<AnClasa> aniClase, String nume) {
+    public Materie creeazaMaterie(List<Specializare> specializari, List<AnClasa> aniClase, String nume) {
         Materie materie = Materie.builder()
                 .specializari(specializari)
                 .aniClase(aniClase)
                 .nume(nume)
                 .build();
-        materieRepository.save(materie);
+        materie = materieRepository.save(materie);
+        return materie;
     }
 }

@@ -3,6 +3,7 @@ package com.example.catalogliceu.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "utilizator")
@@ -11,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Utilizator {
+public abstract class Utilizator implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
@@ -22,4 +23,12 @@ public abstract class Utilizator {
     @Column(unique = true)
     protected String porecla;
     protected String parola;
+    @Override
+    public String getUsername() {
+        return getPorecla();
+    }
+    @Override
+    public String getPassword() {
+        return getParola();
+    }
 }

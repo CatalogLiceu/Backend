@@ -12,7 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class PermisieAdministrator {
+public class PermisieAdministratorScolar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
