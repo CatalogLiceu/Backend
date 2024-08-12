@@ -7,6 +7,7 @@ import com.example.catalogliceu.repositories.MaterieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MaterieService {
@@ -22,5 +23,11 @@ public class MaterieService {
                 .build();
         materie = materieRepository.save(materie);
         return materie;
+    }
+    public Optional<Materie> dupaId(Long id) {
+        return materieRepository.findById(id);
+    }
+    public List<Materie> dupaSpecializare(Specializare specializare) {
+        return materieRepository.findBySpecializari(specializare);
     }
 }

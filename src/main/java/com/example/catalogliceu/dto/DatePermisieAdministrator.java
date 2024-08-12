@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DateProfesor {
-    private String nume;
-    private String prenume;
-    private String email;
-    private String porecla;
-    private String parola;
+public class DatePermisieAdministrator {
+    private Long idLiceu;
+    private Long idUtilizator;
 }

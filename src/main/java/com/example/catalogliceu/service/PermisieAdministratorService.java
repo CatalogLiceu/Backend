@@ -12,12 +12,13 @@ public class PermisieAdministratorService {
     public PermisieAdministratorService(PermisieAdministratorRepository permisieAdministratorRepository) {
         this.permisieAdministratorRepository = permisieAdministratorRepository;
     }
-    public void creeazaPermisieAdministrator(Utilizator utilizator, Liceu liceu) {
+    public PermisieAdministratorScolar creeazaPermisieAdministrator(Utilizator utilizator, Liceu liceu) {
         PermisieAdministratorScolar permisieAdministratorScolar = PermisieAdministratorScolar.builder()
                 .utilizator(utilizator)
                 .liceu(liceu)
                 .build();
-        permisieAdministratorRepository.save(permisieAdministratorScolar);
+        permisieAdministratorScolar = permisieAdministratorRepository.save(permisieAdministratorScolar);
+        return permisieAdministratorScolar;
     }
     public boolean extragerePermisieAdministrator(Utilizator utilizator, Liceu liceu) {
         return permisieAdministratorRepository.existsByUtilizatorAndLiceu(utilizator, liceu);

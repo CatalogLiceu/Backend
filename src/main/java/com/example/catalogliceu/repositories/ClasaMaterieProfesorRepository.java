@@ -1,5 +1,6 @@
 package com.example.catalogliceu.repositories;
 
+import com.example.catalogliceu.entities.Clasa;
 import com.example.catalogliceu.entities.ClasaMaterieProfesor;
 import com.example.catalogliceu.entities.Liceu;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ import java.util.List;
 public interface ClasaMaterieProfesorRepository extends JpaRepository<ClasaMaterieProfesor, Long> {
     @Query("SELECT cmp FROM ClasaMaterieProfesor cmp WHERE cmp.clasa.liceu = :liceu")
     List<ClasaMaterieProfesor> findByLiceu(@Param("liceu") Liceu liceu);
+    @Query("SELECT cmp FROM ClasaMaterieProfesor cmp WHERE cmp.clasa = :clasa")
+    List<ClasaMaterieProfesor> findByClasa(@Param("clasa") Clasa clasa);
 }

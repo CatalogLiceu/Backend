@@ -15,14 +15,15 @@ public class NotaService {
     public NotaService(NotaRepository notaRepository) {
         this.notaRepository = notaRepository;
     }
-    public void creeazaNota(Long valoare, Elev elev, Materie materie, LocalDate data) {
+    public Nota creeazaNota(Long valoare, Elev elev, Materie materie, LocalDate data) {
         Nota nota = Nota.builder()
                 .valoare(valoare)
                 .elev(elev)
                 .materie(materie)
                 .data(data)
                 .build();
-        notaRepository.save(nota);
+        nota = notaRepository.save(nota);
+        return nota;
     }
     public List<Nota> extrageNoteElev(Elev elev) {
         return notaRepository.findByElev(elev);

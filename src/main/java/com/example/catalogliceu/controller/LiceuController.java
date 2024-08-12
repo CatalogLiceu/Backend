@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +58,6 @@ public class LiceuController {
         if(liceu.isEmpty() || anClasa.isEmpty() || specializare.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(clasaService.adaugaClasa(liceu.get(), anClasa.get(), dateClasa.getLitera(), specializare.get()));
+        return ResponseEntity.ok(clasaService.creeazaClasa(liceu.get(), anClasa.get(), dateClasa.getLitera(), specializare.get()));
     }
 }

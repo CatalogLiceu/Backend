@@ -8,9 +8,9 @@ import java.util.List;
 
 @Service
 public class ClasaMaterieProfesorService {
-    private final ClasaMaterieProfesorRepository clasasMaterieProfesorRepository;
+    private final ClasaMaterieProfesorRepository clasaMaterieProfesorRepository;
     public ClasaMaterieProfesorService(ClasaMaterieProfesorRepository clasaMaterieProfesorRepository) {
-        this.clasasMaterieProfesorRepository = clasaMaterieProfesorRepository;
+        this.clasaMaterieProfesorRepository = clasaMaterieProfesorRepository;
     }
     public ClasaMaterieProfesor creeazaClasaMaterieProfesor(Clasa clasa, Materie materie, Profesor profesor) {
         ClasaMaterieProfesor clasaMaterieProfesor = ClasaMaterieProfesor.builder()
@@ -18,10 +18,14 @@ public class ClasaMaterieProfesorService {
                 .materie(materie)
                 .profesor(profesor)
                 .build();
-        clasaMaterieProfesor = clasasMaterieProfesorRepository.save(clasaMaterieProfesor);
+        clasaMaterieProfesor = clasaMaterieProfesorRepository.save(clasaMaterieProfesor);
         return clasaMaterieProfesor;
     }
     public List<ClasaMaterieProfesor> extrageDupaLiceu(Liceu liceu) {
-        return clasasMaterieProfesorRepository.findByLiceu(liceu);
+        return clasaMaterieProfesorRepository.findByLiceu(liceu);
+    }
+    public List<ClasaMaterieProfesor> extrageDupaClasa(Clasa clasa) {
+
+        return clasaMaterieProfesorRepository.findByClasa(clasa);
     }
 }

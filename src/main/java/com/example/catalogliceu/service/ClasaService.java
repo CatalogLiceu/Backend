@@ -8,6 +8,7 @@ import com.example.catalogliceu.repositories.ClasaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClasaService {
@@ -15,7 +16,7 @@ public class ClasaService {
     public ClasaService(ClasaRepository clasaRepository) {
         this.clasaRepository = clasaRepository;
     }
-    public Clasa adaugaClasa(Liceu liceu, AnClasa anClasa, String litera, Specializare specializare) {
+    public Clasa creeazaClasa(Liceu liceu, AnClasa anClasa, String litera, Specializare specializare) {
         Clasa clasa = Clasa.builder()
                 .liceu(liceu)
                 .anClasa(anClasa)
@@ -27,5 +28,8 @@ public class ClasaService {
     }
     public List<Clasa> extrageDupaLiceu(Liceu liceu) {
         return clasaRepository.findByLiceu(liceu);
+    }
+    public Optional<Clasa> dupaId(Long id) {
+        return clasaRepository.findById(id);
     }
 }
