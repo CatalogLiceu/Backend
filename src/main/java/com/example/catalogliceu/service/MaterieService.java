@@ -1,8 +1,11 @@
 package com.example.catalogliceu.service;
 
+import com.example.catalogliceu.dto.CerereSchimbareNumeMaterie;
+import com.example.catalogliceu.dto.CerereSchimbareNumePrenumeUtilizator;
 import com.example.catalogliceu.entities.AnClasa;
 import com.example.catalogliceu.entities.Materie;
 import com.example.catalogliceu.entities.Specializare;
+import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.repositories.MaterieRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +32,10 @@ public class MaterieService {
     }
     public List<Materie> dupaSpecializare(Specializare specializare) {
         return materieRepository.findBySpecializari(specializare);
+    }
+    public Materie schimbaNumeMaterie(Materie materie, CerereSchimbareNumeMaterie cerereSchimbareNumeMaterie) {
+        materie.setNume(cerereSchimbareNumeMaterie.getNume());
+        materie = materieRepository.save(materie);
+        return materie;
     }
 }

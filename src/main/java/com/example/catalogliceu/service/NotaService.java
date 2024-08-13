@@ -28,4 +28,7 @@ public class NotaService {
     public List<Nota> extrageNoteElev(Elev elev) {
         return notaRepository.findByElev(elev);
     }
+    public List<Nota> extrageNoteElevMaterie(Elev elev, Materie materie) {
+        return notaRepository.findByElevAndMaterie(elev, materie);
+    }
 }

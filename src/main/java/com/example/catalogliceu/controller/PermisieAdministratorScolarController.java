@@ -9,6 +9,7 @@ import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.service.LiceuService;
 import com.example.catalogliceu.service.PermisieAdministratorService;
 import com.example.catalogliceu.service.UtilizatorService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,9 @@ public class PermisieAdministratorScolarController {
     private final PermisieAdministratorService permisieAdministratorService;
     private final UtilizatorService utilizatorService;
     private final LiceuService liceuService;
+    @Operation(
+            summary = "Adauga permisie de administrator scolar pentru un anumit liceu"
+    )
     @PostMapping("")
     public ResponseEntity<PermisieAdministratorScolar> creeazaPermisie(
             @RequestBody DatePermisieAdministrator datePermisieAdministrator

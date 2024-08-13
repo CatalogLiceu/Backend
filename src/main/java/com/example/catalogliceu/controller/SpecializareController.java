@@ -5,6 +5,7 @@ import com.example.catalogliceu.entities.Profil;
 import com.example.catalogliceu.entities.Specializare;
 import com.example.catalogliceu.service.ProfilService;
 import com.example.catalogliceu.service.SpecializareService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,9 @@ import java.util.Optional;
 public class SpecializareController {
     private final ProfilService profilService;
     private final SpecializareService specializareService;
+    @Operation(
+            summary = "Adauga o specializare la un anumit profil"
+    )
     @PostMapping("/")
     public ResponseEntity<Specializare> adaugaSpecializare(
             @RequestBody DateSpecializare dateSpecializare

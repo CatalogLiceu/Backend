@@ -7,6 +7,7 @@ import com.example.catalogliceu.entities.Profesor;
 import com.example.catalogliceu.service.ClasaService;
 import com.example.catalogliceu.service.DiriginteService;
 import com.example.catalogliceu.service.ProfesorService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,9 @@ public class DiriginteController {
     private final DiriginteService diriginteService;
     private final ClasaService clasaService;
     private final ProfesorService profesorService;
+    @Operation(
+            summary = "Adauga un diriginte pentru o clasa"
+    )
     @PostMapping
     public ResponseEntity<Diriginte> creeazaDiriginte(
             @RequestBody DateDiriginte dateDiriginte

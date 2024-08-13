@@ -22,7 +22,7 @@ public class JwtFiltruAutentificare extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getRequestURI().contains("login") || request.getRequestURI().contains("swagger");
+        return request.getRequestURI().contains("login") || request.getRequestURI().contains("swagger") || request.getRequestURI().contains("v3/api-docs");
     }
 
     @Override

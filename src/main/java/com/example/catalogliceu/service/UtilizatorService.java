@@ -1,5 +1,6 @@
 package com.example.catalogliceu.service;
 
+import com.example.catalogliceu.dto.CerereSchimbareNumePrenumeUtilizator;
 import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.repositories.UtilizatorRepository;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,11 @@ public class UtilizatorService {
     }
     public Optional<Utilizator> dupaId(Long id) {
         return utilizatorRepository.findById(id);
+    }
+    public Utilizator schimbaNumeUtilizator(Utilizator utilizator, CerereSchimbareNumePrenumeUtilizator cerereSchimbareNumePrenumeUtilizator) {
+        utilizator.setNume(cerereSchimbareNumePrenumeUtilizator.getNume());
+        utilizator.setPrenume(cerereSchimbareNumePrenumeUtilizator.getPrenume());
+        utilizator = utilizatorRepository.save(utilizator);
+        return utilizator;
     }
 }

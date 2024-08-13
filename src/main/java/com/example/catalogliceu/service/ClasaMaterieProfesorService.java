@@ -25,7 +25,9 @@ public class ClasaMaterieProfesorService {
         return clasaMaterieProfesorRepository.findByLiceu(liceu);
     }
     public List<ClasaMaterieProfesor> extrageDupaClasa(Clasa clasa) {
-
         return clasaMaterieProfesorRepository.findByClasa(clasa);
+    }
+    public List<ClasaMaterieProfesor> extrageDupaProfesor(Profesor profesor) {
+        return clasaMaterieProfesorRepository.findByProfesor(profesor);
     }
 }

@@ -1,21 +1,22 @@
 package com.example.catalogliceu.controller;
 
+import com.example.catalogliceu.dto.CerereSchimbareNumeMaterie;
 import com.example.catalogliceu.dto.DateMaterie;
 import com.example.catalogliceu.entities.AnClasa;
 import com.example.catalogliceu.entities.Materie;
 import com.example.catalogliceu.entities.Specializare;
+import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.exceptions.SpecializareInexistentaException;
 import com.example.catalogliceu.service.AnClasaService;
 import com.example.catalogliceu.service.MaterieService;
 import com.example.catalogliceu.service.SpecializareService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/materie")
@@ -24,6 +25,9 @@ public class MaterieController {
     private final MaterieService materieService;
     private final SpecializareService specializareService;
     private final AnClasaService anClasaService;
+    @Operation(
+            summary = "Adauga o materie valabila pentru o multime de specializari si ani scolari"
+    )
     @PostMapping("/")
     public ResponseEntity<Materie> creeazaMaterie(
             @RequestBody DateMaterie dateMaterie
@@ -38,5 +42,16 @@ public class MaterieController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(materieService.creeazaMaterie(specializari, aniClase, dateMaterie.getNume()));
+    }
+    @Operation(
+            summary = "Schimba numele unei materii"
+    )
+    @PutMapping("/{id}")
+    public ResponseEntity<Materie> schimbaNumeMaterie(
+            @PathVariable Long id,
+            @RequestBody CerereSchimbareNumeMaterie cerereSchimbareNumeMaterie
+    ) {
+        Optional<Materie> materie = materieService.dupaId(id);
+        return materie.map(value -> ResponseEntity.ok(materieService.schimbaNumeMaterie(value, cerereSchimbareNumeMaterie))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

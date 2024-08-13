@@ -5,6 +5,7 @@ import com.example.catalogliceu.dto.DateLiceu;
 import com.example.catalogliceu.entities.*;
 import com.example.catalogliceu.exceptions.SpecializareInexistentaException;
 import com.example.catalogliceu.service.*;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +21,16 @@ public class LiceuController {
     private final SpecializareService specializareService;
     private final ClasaService clasaService;
     private final AnClasaService anClasaService;
-
+    @Operation(
+            summary = "Extrage toate liceele"
+    )
     @GetMapping("/")
     public ResponseEntity<List<Liceu>> getLicee() {
         return ResponseEntity.ok(liceuService.toateLiceele());
     }
+    @Operation(
+            summary = "Creeaza un liceu"
+    )
     @PostMapping("/")
     public ResponseEntity<Liceu> creeazaLiceu(
             @RequestBody DateLiceu dateLiceu
@@ -38,16 +44,25 @@ public class LiceuController {
         }
         return ResponseEntity.ok(liceuService.creeazaLiceu(specializari, dateLiceu.getNume()));
     }
+    @Operation(
+            summary = "Extrage profesorii de la un anumit liceu"
+    )
     @GetMapping("/{id}/profesori")
     public ResponseEntity<List<Profesor>> extrageProfesori(@PathVariable Long id) {
         Optional<Liceu> liceu = liceuService.dupaId(id);
         return liceu.map(value -> ResponseEntity.ok(liceuService.extrageProfesori(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @Operation(
+            summary = "Extrage clasele de la un anumit liceu"
+    )
     @GetMapping("/{id}/clase")
     public ResponseEntity<List<Clasa>> extrageClase(@PathVariable Long id) {
         Optional<Liceu> liceu = liceuService.dupaId(id);
         return liceu.map(value -> ResponseEntity.ok(clasaService.extrageDupaLiceu(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @Operation(
+            summary = "Creeaza o clasa pentru un anumit liceu"
+    )
     @PostMapping("/{id}/clasa")
     public ResponseEntity<Clasa> creeazaClasa(
             @RequestBody DateClasa dateClasa,
