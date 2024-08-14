@@ -7,13 +7,14 @@ Baza de date:
 1. Instalare PostgreSQL.
 2. Creare o baza de date numita 'CatalogLiceu' (din pgAdmin).
 3. In IntelliJ:
+   
     ![image](https://github.com/user-attachments/assets/78d33704-8e37-4bb8-a227-ee22127a1386)
-4. Configurare campuri necesare:
+5. Configurare campuri necesare:
    
    ![image](https://github.com/user-attachments/assets/efe9ccb5-efdf-407f-a1c0-9a993908c6da)
    
    ![image](https://github.com/user-attachments/assets/22973b5b-9f66-4a73-8905-71b7f8ca470a)
-5. In 'application.properties' (asigurati-va ca sunt folosite aceleasi credentiale ca in PgAdmin si pasul anterior):
+6. In 'application.properties' (asigurati-va ca sunt folosite aceleasi credentiale ca in PgAdmin si pasul anterior):
    
    ![image](https://github.com/user-attachments/assets/0b94b374-9161-4ed0-8a3f-5d338f671564)
   
