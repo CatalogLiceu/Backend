@@ -30,5 +30,6 @@ public class Materie {
             inverseJoinColumns = @JoinColumn(name = "an_clasa_id")
     )
     private List<AnClasa> aniClase;
+    @Column(unique = true)
     private String nume;
 }
