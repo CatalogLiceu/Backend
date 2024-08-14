@@ -3,6 +3,7 @@ package com.example.catalogliceu.controller;
 import com.example.catalogliceu.dto.CerereInregistrareAdministratorScolar;
 import com.example.catalogliceu.entities.AdministratorScolar;
 import com.example.catalogliceu.service.AdministratorScolarService;
+import com.example.catalogliceu.service.PermisieAdministratorService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AdministratorScolarController {
     private final AdministratorScolarService administratorScolarService;
+    private final PermisieAdministratorService permisieAdministratorService;
     @Operation(
             summary = "Adauga un administrator scolar pentru un anumit liceu"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<AdministratorScolar> adaugaAdministratorScolar(
             @RequestBody CerereInregistrareAdministratorScolar cerereInregistrareAdministratorScolar
     ) {

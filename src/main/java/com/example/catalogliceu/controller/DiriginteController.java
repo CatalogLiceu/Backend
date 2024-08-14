@@ -27,7 +27,7 @@ public class DiriginteController {
     @Operation(
             summary = "Adauga un diriginte pentru o clasa"
     )
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Diriginte> creeazaDiriginte(
             @RequestBody DateDiriginte dateDiriginte
     ) {

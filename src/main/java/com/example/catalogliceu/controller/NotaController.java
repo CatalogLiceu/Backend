@@ -23,7 +23,7 @@ public class NotaController {
     @Operation(
             summary = "Adauga o nota pentru un elev si materie"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Nota> creeazaNota(
             @RequestBody DateNota dateNota
     ) {

@@ -18,15 +18,18 @@ public class AnClasaController {
     @Operation(
             summary = "Extrage anii existenti pt. clase"
     )
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<AnClasa>> getAniClasa() {
         return ResponseEntity.ok(anClasaService.getAniClase());
     }
     @Operation(
             summary = "Adauga un an nou pt. clase"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<AnClasa> createAniClasa(@RequestBody DateAnClasa dateAnClasa) {
+        if(dateAnClasa.getNrClasa() < 9 || dateAnClasa.getNrClasa() > 13) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(anClasaService.creeazaAn(dateAnClasa));
     }
 }

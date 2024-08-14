@@ -23,7 +23,12 @@ public class Materie {
             inverseJoinColumns = @JoinColumn(name = "specializare_id")
     )
     private List<Specializare> specializari;
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "materie_ani_clasa",
+            joinColumns = @JoinColumn(name = "materie_id"),
+            inverseJoinColumns = @JoinColumn(name = "an_clasa_id")
+    )
     private List<AnClasa> aniClase;
     private String nume;
 }

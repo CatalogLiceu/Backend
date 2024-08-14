@@ -22,7 +22,7 @@ public class ProfilController {
     @Operation(
             summary = "Adauga un profil"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Profil> creeazaProfil(
             @RequestBody DateProfil dateProfil
     ) {
@@ -31,7 +31,7 @@ public class ProfilController {
     @Operation(
             summary = "Extrage toate profilurile"
     )
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Profil>> getProfil() {
         return ResponseEntity.ok(profilService.toateProfilele());
     }

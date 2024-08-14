@@ -5,6 +5,7 @@ import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.repositories.UtilizatorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,8 @@ public class UtilizatorService {
         utilizator.setPrenume(cerereSchimbareNumePrenumeUtilizator.getPrenume());
         utilizator = utilizatorRepository.save(utilizator);
         return utilizator;
+    }
+    public List<Utilizator> totiUtilizatorii() {
+        return utilizatorRepository.findAll();
     }
 }

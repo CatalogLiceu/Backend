@@ -28,7 +28,7 @@ public class ClasaMaterieProfesorController {
     @Operation(
             summary = "Adauga pentru un profesor clasa si materia pe care o va preda"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<ClasaMaterieProfesor> creeazaClasaMaterieProfesor(
             @RequestBody DateClasaMaterieProfesor dateClasaMaterieProfesor
     ) {

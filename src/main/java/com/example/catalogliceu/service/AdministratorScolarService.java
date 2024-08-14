@@ -14,10 +14,12 @@ public class AdministratorScolarService {
     private final AdministratorScolarRepository administratorScolarRepository;
     private final LiceuService liceuService;
     private final PasswordEncoder passwordEncoder;
-    public AdministratorScolarService(AdministratorScolarRepository administratorScolarRepository, LiceuService liceuService, PasswordEncoder passwordEncoder) {
+    private final PermisieAdministratorService permisieAdministratorService;
+    public AdministratorScolarService(AdministratorScolarRepository administratorScolarRepository, LiceuService liceuService, PasswordEncoder passwordEncoder, PermisieAdministratorService permisieAdministratorService) {
         this.administratorScolarRepository = administratorScolarRepository;
         this.liceuService = liceuService;
         this.passwordEncoder = passwordEncoder;
+        this.permisieAdministratorService = permisieAdministratorService;
     }
     public AdministratorScolar adaugaAdministratorScolar(CerereInregistrareAdministratorScolar cerereInregistrareAdministratorScolar) {
         Liceu liceu = liceuService.dupaId(cerereInregistrareAdministratorScolar.getIdLiceu())
@@ -31,6 +33,7 @@ public class AdministratorScolarService {
                 .liceu(liceu)
                 .build();
         administratorScolarRepository.save(administratorScolar);
+        permisieAdministratorService.creeazaPermisieAdministrator(administratorScolar, liceu);
         return administratorScolar;
     }
 

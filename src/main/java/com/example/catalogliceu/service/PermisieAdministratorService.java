@@ -6,6 +6,8 @@ import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.repositories.PermisieAdministratorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PermisieAdministratorService {
     private final PermisieAdministratorRepository permisieAdministratorRepository;
@@ -22,5 +24,8 @@ public class PermisieAdministratorService {
     }
     public boolean extragerePermisieAdministrator(Utilizator utilizator, Liceu liceu) {
         return permisieAdministratorRepository.existsByUtilizatorAndLiceu(utilizator, liceu);
+    }
+    public List<PermisieAdministratorScolar> gasestePermisiiPentruUtilizator(Utilizator utilizator) {
+        return permisieAdministratorRepository.findAllByUtilizator(utilizator);
     }
 }

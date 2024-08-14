@@ -24,14 +24,24 @@ public class LiceuController {
     @Operation(
             summary = "Extrage toate liceele"
     )
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Liceu>> getLicee() {
         return ResponseEntity.ok(liceuService.toateLiceele());
     }
     @Operation(
+            summary = "Extrage datele unui anumit liceu"
+    )
+    @GetMapping("/{id}")
+    public ResponseEntity<Liceu> getLiceu(
+            @PathVariable Long id
+    ) {
+        Optional<Liceu> liceu = liceuService.dupaId(id);
+        return liceu.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    @Operation(
             summary = "Creeaza un liceu"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Liceu> creeazaLiceu(
             @RequestBody DateLiceu dateLiceu
     ) {

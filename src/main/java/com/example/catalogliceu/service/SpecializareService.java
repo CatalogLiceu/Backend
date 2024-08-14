@@ -41,4 +41,7 @@ public class SpecializareService {
         }
         return specializari;
     }
+    public List<Specializare> extrageToate() {
+        return specializareRepository.findAll();
+    }
 }

@@ -5,7 +5,6 @@ import com.example.catalogliceu.dto.DateMaterie;
 import com.example.catalogliceu.entities.AnClasa;
 import com.example.catalogliceu.entities.Materie;
 import com.example.catalogliceu.entities.Specializare;
-import com.example.catalogliceu.entities.Utilizator;
 import com.example.catalogliceu.exceptions.SpecializareInexistentaException;
 import com.example.catalogliceu.service.AnClasaService;
 import com.example.catalogliceu.service.MaterieService;
@@ -28,7 +27,7 @@ public class MaterieController {
     @Operation(
             summary = "Adauga o materie valabila pentru o multime de specializari si ani scolari"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Materie> creeazaMaterie(
             @RequestBody DateMaterie dateMaterie
     ) {
@@ -53,5 +52,13 @@ public class MaterieController {
     ) {
         Optional<Materie> materie = materieService.dupaId(id);
         return materie.map(value -> ResponseEntity.ok(materieService.schimbaNumeMaterie(value, cerereSchimbareNumeMaterie))).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    @Operation(
+            summary = "Extrage toate materiile"
+    )
+    @GetMapping("")
+    public ResponseEntity<List<Materie>> extrageMaterii(
+    ) {
+       return ResponseEntity.ok(materieService.extrageToate());
     }
 }

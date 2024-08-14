@@ -38,4 +38,7 @@ public class MaterieService {
         materie = materieRepository.save(materie);
         return materie;
     }
+    public List<Materie> extrageToate() {
+        return materieRepository.findAll();
+    }
 }

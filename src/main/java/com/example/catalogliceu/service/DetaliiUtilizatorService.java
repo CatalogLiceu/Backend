@@ -33,7 +33,7 @@ public class DetaliiUtilizatorService implements UserDetailsService {
         this.administratorPlatformaService = administratorPlatformaService;
         this.utilizatorRepository = utilizatorRepository;
     }
-    private Set<GrantedAuthority> extrageRoluriUtilizator(Utilizator utilizator) {
+    public Set<GrantedAuthority> extrageRoluriUtilizator(Utilizator utilizator) {
         Set<GrantedAuthority> authorities = new HashSet<>();
         if (administratorScolarService.esteAdministratorScolar(utilizator)) {
             authorities.add(new SimpleGrantedAuthority(Rol.ROL_ADMINISTRATOR_SCOLAR.toString()));

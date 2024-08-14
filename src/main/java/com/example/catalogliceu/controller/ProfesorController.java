@@ -18,7 +18,7 @@ public class ProfesorController {
     @Operation(
             summary = "Adauga un profesor"
     )
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Profesor> creeazaProfesor(
             @RequestBody DateUtilizator dateUtilizator
     ) {
@@ -27,7 +27,7 @@ public class ProfesorController {
     @Operation(
             summary = "Extrage toti profesorii"
     )
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Profesor>> getProfesori() {
         return ResponseEntity.ok(profesorService.totiProfesorii());
     }

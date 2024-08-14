@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CerereInregistrareAdministratorScolar {
-    private CerereInregistrareUtilizator cerereInregistrareUtilizator;
+    private DateUtilizator cerereInregistrareUtilizator;
     private Long idLiceu;
 }

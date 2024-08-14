@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,6 +16,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UtilizatorController {
     private final UtilizatorService utilizatorService;
+    @Operation(
+            summary = "Extrage toti utilizatorii"
+    )
+    @GetMapping("")
+    public ResponseEntity<List<Utilizator>> extrageTotiUtilizatorii() {
+        return ResponseEntity.ok(utilizatorService.totiUtilizatorii());
+    }
     @Operation(
             summary = "Schimba numele si prenumele unui utilizator"
     )
